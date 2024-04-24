@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
-@section('title', 'Mitigasi Resiko')
-@section('pageName', 'Mitigasi Resiko')
+@section('title', 'Mitigasi Risiko')
+@section('pageName', 'Mitigasi Risiko')
 
 @section('content')
 <div class="container">

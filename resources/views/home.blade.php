@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <i class="fa-solid fa-triangle-exclamation" style="font-size: 200px"></i>
-                    <h1>Mitigasi Resiko</h1>
+                    <h1>Mitigasi Risiko</h1>
                 </div>
             </div>
         </div>

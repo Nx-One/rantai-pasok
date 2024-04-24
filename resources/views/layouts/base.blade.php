@@ -56,7 +56,7 @@
                 <li class="sidebar-item">
                     <a href="{{ route('mitigasi') }}" class="sidebar-link">
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>Mitigasi Resiko</span>
+                        <span>Mitigasi Risiko</span>
                     </a>
                 </li>
             </ul>
