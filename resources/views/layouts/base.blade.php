@@ -36,10 +36,31 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('persediaan') }}" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-warehouse"></i>
                         <span>Persediaan</span>
                     </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('persediaan') }}" class="sidebar-link">Form Persediaan</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('historyPersediaan') }}" class="sidebar-link">Riwayat Persediaan</a>
+                        </li>
+                    </ul>
+                    {{-- <a href="{{ route('persediaan') }}" class="sidebar-link">
+                        <i class="fa-solid fa-warehouse"></i>
+                        <span>Persediaan</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul> --}}
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('mutu') }}" class="sidebar-link">

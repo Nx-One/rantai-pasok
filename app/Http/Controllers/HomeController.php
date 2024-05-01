@@ -25,25 +25,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    // TEMP CODE. TODO: Move this to a new controller
-    public function persediaan()
-    {
-        return view('persediaan.index');
-    }
-
-    public function mitigasi()
-    {
-        return view('mitigasi.index');
-    }
-
-    public function rantai()
-    {
-        return view('rantai.index');
-    }
-
-    public function mutu()
-    {
-        return view('mutu.index');
-    }
 }

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Kinerja Rantai Pasok'); ?>
 <?php $__env->startSection('pageName', 'Kinerja Rantai Pasok'); ?>
 
@@ -20,7 +18,7 @@
             </p>
         </div>
         <div class="col-6 d-flex align-items-end">
-            <a href="#" class="btn bg-yellow-custom" style="font-size: 25px">
+            <a href="<?php echo e(route('formRantai')); ?>" class="btn btn-yellow-custom" style="font-size: 25px">
                 <i class="fa-solid fa-chart-line"></i>
                 Ukur Nilai Kinerja Rantai Pasok
             </a>

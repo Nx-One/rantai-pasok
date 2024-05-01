@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group mt-4">
-                    <button type="submit" class="btn btn-primary">Hitung EOQ</button>
+                    <button type="submit" class="btn btn-yellow-custom">Hitung EOQ</button>
                 </div>
             </div>
         </div>
