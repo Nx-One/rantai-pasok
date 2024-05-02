@@ -16,6 +16,7 @@
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
+    <?php echo $__env->yieldContent('styles'); ?>
 </head>
 <body>
     <div class="wrapper">
@@ -64,7 +65,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="<?php echo e(route('mitigasi')); ?>" class="sidebar-link">
+                    <a href="<?php echo e(route('hor1Mitigasi')); ?>" class="sidebar-link">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <span>Mitigasi Risiko</span>
                     </a>
@@ -111,9 +112,10 @@
             <?php echo $__env->yieldContent('content'); ?>
         </div>
     </div>
-
+    <script src="<?php echo e(asset('js/vendor/jquery-3.6.3.min.js')); ?>"></script>
     <script src="https://kit.fontawesome.com/c621075835.js" crossorigin="anonymous"></script>
     <script src="<?php echo e(asset('js/script.js')); ?>"></script>
+    <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 </html>
 <?php /**PATH D:\Ngoding\laravel\rantai-pasok\resources\views/layouts/base.blade.php ENDPATH**/ ?>

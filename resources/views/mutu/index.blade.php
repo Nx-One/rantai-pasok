@@ -5,21 +5,55 @@
 
 @section('content')
 <div class="container">
-    <form action="">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="fw-bold" for="tanggal">Masukkan Bulan Produksi Durian </label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal">
+    <div class="row">
+        <form action="">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="fw-bold" for="tanggal">Masukkan Bulan Produksi Durian </label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-yellow-custom mt-4">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Cari
+                    </button>
                 </div>
             </div>
-            <div class="col-md-5">
-                <button type="submit" class="btn btn-yellow-custom mt-4">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    Cari
-                </button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
+    <div class="row my-4">
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById("myChart");
+    
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [
+                    {
+                        label: "# of Votes",
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    </script>
+    
 @endsection

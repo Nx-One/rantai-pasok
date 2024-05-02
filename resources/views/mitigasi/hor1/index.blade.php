@@ -1,14 +1,6 @@
-@extends('layouts.base')
+@extends('layouts.mitigasi')
 
-@section('title', 'Mitigasi Risiko')
-@section('pageName', 'Mitigasi Risiko')
-
-@section('content')
-<div class="container">
-    <div class="my-3">
-        <a href="#" type="button" class="btn btn-yellow-custom">HOR 1</a>
-        <a href="{{ route('horMitigasi') }}" type="button" class="btn btn-outline-secondary">HOR 2</a>
-    </div>
+@section('contentMitigasi')
     <div class="row my-3 justify-content-center">
         <div class="col-6">
             <table class="table">
@@ -432,6 +424,5 @@
             </div>
         </form>
     </div>
-    
-</div>
 @endsection
+
