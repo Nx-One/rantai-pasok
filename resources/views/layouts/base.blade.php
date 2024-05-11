@@ -38,11 +38,11 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        data-bs-target="#persediaan" aria-expanded="false" aria-controls="persediaan">
                         <i class="fa-solid fa-warehouse"></i>
                         <span>Persediaan</span>
                     </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="persediaan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a href="{{ route('persediaan') }}" class="sidebar-link">Form Persediaan</a>
                         </li>
@@ -50,18 +50,6 @@
                             <a href="{{ route('historyPersediaan') }}" class="sidebar-link">Riwayat Persediaan</a>
                         </li>
                     </ul>
-                    {{-- <a href="{{ route('persediaan') }}" class="sidebar-link">
-                        <i class="fa-solid fa-warehouse"></i>
-                        <span>Persediaan</span>
-                    </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Login</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Register</a>
-                        </li>
-                    </ul> --}}
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('mutu') }}" class="sidebar-link">
@@ -70,10 +58,19 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('rantai') }}" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#kinerja" aria-expanded="false" aria-controls="kinerja">
                         <i class="fa-solid fa-chart-line"></i>
                         <span>Kinerja Rantai Pasok</span>
                     </a>
+                    <ul id="kinerja" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('rantai') }}" class="sidebar-link">Form Kinerja Rantai Pasok</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('historyRantai') }}" class="sidebar-link">Riwayat Kinerja Rantai Pasok</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('hor1Mitigasi') }}" class="sidebar-link">
@@ -119,6 +116,20 @@
                     </div>
                 </div>
             </nav>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>

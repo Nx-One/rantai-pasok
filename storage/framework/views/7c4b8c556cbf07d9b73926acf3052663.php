@@ -38,11 +38,11 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        data-bs-target="#persediaan" aria-expanded="false" aria-controls="persediaan">
                         <i class="fa-solid fa-warehouse"></i>
                         <span>Persediaan</span>
                     </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="persediaan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a href="<?php echo e(route('persediaan')); ?>" class="sidebar-link">Form Persediaan</a>
                         </li>
@@ -50,7 +50,6 @@
                             <a href="<?php echo e(route('historyPersediaan')); ?>" class="sidebar-link">Riwayat Persediaan</a>
                         </li>
                     </ul>
-                    
                 </li>
                 <li class="sidebar-item">
                     <a href="<?php echo e(route('mutu')); ?>" class="sidebar-link">
@@ -59,10 +58,19 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="<?php echo e(route('rantai')); ?>" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#kinerja" aria-expanded="false" aria-controls="kinerja">
                         <i class="fa-solid fa-chart-line"></i>
                         <span>Kinerja Rantai Pasok</span>
                     </a>
+                    <ul id="kinerja" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="<?php echo e(route('rantai')); ?>" class="sidebar-link">Form Kinerja Rantai Pasok</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?php echo e(route('historyRantai')); ?>" class="sidebar-link">Riwayat Kinerja Rantai Pasok</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="<?php echo e(route('hor1Mitigasi')); ?>" class="sidebar-link">
@@ -109,6 +117,21 @@
                     </div>
                 </div>
             </nav>
+            <?php if($errors->any()): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            <?php if(session('success')): ?>
+                <div class="alert alert-success">
+                    <?php echo e(session('success')); ?>
+
+                </div>
+            <?php endif; ?>
             <?php echo $__env->yieldContent('content'); ?>
         </div>
     </div>

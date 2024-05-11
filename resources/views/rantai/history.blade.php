@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
-@section('title', 'History Persediaan')
-@section('pageName', 'History Persediaan')
+@section('title', 'Kinerja Rantai Pasok')
+@section('pageName', 'Kinerja Rantai Pasok')
 
 @section('content')
 <div class="container">
@@ -9,15 +9,28 @@
         <thead>
             <tr>
                 <th>Tanggal</th>
-                <th>Persediaan (Pack)</th>
-                <th>Minimal Persediaan (Pack)</th>
+                <th>Total Kinerja (%)</th>
+                <th>Status Kinerja</th>
                 <th>User</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($inventories as $inventory)
+            @foreach ($performances as $performance)
             <tr>
+                <td>{{ $performance->updated_at }}</td>
+                <td>{{ $performance->total }}</td>
+                <td>{{ $performance->status }}</td>
+                <td>{{ $performance->user->name }}</td>
+                <td>
+                    <a href="{{ route('editRantai', $performance->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('deleteRantai', $performance->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </td>
+            {{-- <tr>
                 <td>{{ $inventory->updated_at }}</td>
                 <td>{{ $inventory->durian_quantity }}</td>
                 <td>{{ $inventory->minimum_stock }}</td>
@@ -30,7 +43,7 @@
                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                 </td>
-            </tr>
+            </tr> --}}
             @endforeach
         </tbody>
     </table>
