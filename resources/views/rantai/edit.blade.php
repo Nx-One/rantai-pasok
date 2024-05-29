@@ -3,6 +3,10 @@
 @section('title', 'Kinerja Rantai Pasok')
 @section('pageName', 'Kinerja Rantai Pasok')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/rantai/style.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row my-3">
@@ -17,192 +21,95 @@
             @csrf
             @method('PUT')
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah pesanan yang dikirim tepat waktu</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="orders_shipped" value="{{ $performance->orders_shipped }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
+                <div class="col">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="background-color: #FFF2AC;" class="col-1 align-middle text-center" rowspan="2">No</th>
+                                <th style="background-color: #FFF2AC;" class="col align-middle text-center" rowspan="2">Metrik</th>
+                                <th style="background-color: #FFF2AC;" colspan="3" class="col text-center">Nilai Metrik</th>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FFF2AC;" class="col text-center">Minimum</th>
+                                <th style="background-color: #FFF2AC;" class="col text-center">Maksimum</th>
+                                <th style="background-color: #FFF2AC;" class="col text-center">Aktual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Jumlah pesanan yang dikirim tepat waktu (ton)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_orders_shipped" value="{{ $performance->min_orders_shipped }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_orders_shipped" value="{{ $performance->max_orders_shipped }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_orders_shipped" value="{{ $performance->act_orders_shipped }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jumlah permintaan yang dipenuhi dengan waktu dan jumlah yang sesuai (ton)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_requests_fulfilled" value="{{ $performance->min_requests_fulfilled }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_requests_fulfilled" value="{{ $performance->max_requests_fulfilled }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_requests_fulfilled" value="{{ $performance->act_requests_fulfilled }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Jumlah pengiriman yang sesuai standar (ton)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_number_of_shipments" value="{{ $performance->min_number_of_shipments }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_number_of_shipments" value="{{ $performance->max_number_of_shipments }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_number_of_shipments" value="{{ $performance->act_number_of_shipments }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Lead time atau waktu yang dibutuhkan sejak pesanan diterima hingga dikirim ke tangan konsumen (hari)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_lead_time" value="{{ $performance->min_lead_time }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_lead_time" value="{{ $performance->max_lead_time }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_lead_time" value="{{ $performance->act_lead_time }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Siklus pemenuhan pesanan atau waktu yang dibutuhkan dari mulai pengadaan bahan baku, proses produksi, hingga pengiriman produk (hari)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_order_cycles" value="{{ $performance->min_order_cycles }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_order_cycles" value="{{ $performance->max_order_cycles }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_order_cycles" value="{{ $performance->act_order_cycles }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Fleksibilitas atau waktu yang dibutuhkan dari mulai perencanaan, pengadaan, proses, pengiriman, hingga produk tiba di tangan konsumen (hari)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_flexibility" value="{{ $performance->min_flexibility }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_flexibility" value="{{ $performance->max_flexibility }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_flexibility" value="{{ $performance->act_flexibility }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Biaya total rantai pasok (Rp/kg)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_supply_chain_costs" value="{{ $performance->min_supply_chain_costs }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_supply_chain_costs" value="{{ $performance->max_supply_chain_costs }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_supply_chain_costs" value="{{ $performance->act_supply_chain_costs }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Harga pokok penjualan (Rp/kg)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_cogs" value="{{ $performance->min_cogs }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_cogs" value="{{ $performance->max_cogs }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_cogs" value="{{ $performance->act_cogs }}" /></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Siklus perputaran modal (hari)</td>
+                                <td><input type="text" class="text-center" placeholder="" name="min_payback_cycle" value="{{ $performance->min_payback_cycle }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="max_payback_cycle" value="{{ $performance->max_payback_cycle }}" /></td>
+                                <td><input type="text" class="text-center" placeholder="" name="act_payback_cycle" value="{{ $performance->act_payback_cycle }}" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Total jumlah pesanan</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_orders_shipped" value="{{ $performance->target_orders_shipped }}"/>
-                            <span class="input-group-text">pack</span>
+                <div class="row">
+                    <div class="col text-end">
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-yellow-custom">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Hitung Nilai Kinerja
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah permintaan yang dipenuhi dengan waktu dan jumlah yang sesuai</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="requests_fulfilled" value="{{ $performance->requests_fulfilled }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Total jumlah permintaan</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_requests_fulfilled" value="{{ $performance->target_requests_fulfilled }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah pengiriman yang sesuai standar</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="number_of_shipments" value="{{ $performance->number_of_shipments }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Total pengiriman</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_number_of_shipments" value="{{ $performance->target_number_of_shipments }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Lead time</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="lead_time" value="{{ $performance->lead_time }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target lead time tercepat</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_lead_time" value="{{ $performance->target_lead_time }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Siklus pemenuhan pesanan</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="order_cycles" value="{{ $performance->order_cycles }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target siklus pemenuhan tercepat</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_order_cycles" value="{{ $performance->target_order_cycles }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Fleksibilitas</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="flexibility" value="{{ $performance->flexibility }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target fleksibilitas tercepat</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_flexibility" value="{{ $performance->target_flexibility }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Biaya total rantai pasok</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="supply_chain_costs" value="{{ $performance->supply_chain_costs }}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target total biaya terendah</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="target_supply_chain_costs" value="{{ $performance->target_supply_chain_costs }}"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Harga pokok penjualan (HPP)</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="cogs" value="{{ $performance->cogs }}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target HPP terendah</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="target_cogs" value="{{ $performance->target_cogs }}"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Siklus balik modal</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="payback_cycle" value="{{ $performance->payback_cycle }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Target siklus balik modal tercepat</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="target_payback_cycle" value="{{ $performance->target_payback_cycle }}"/>
-                            <span class="input-group-text">hari</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-end">
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-yellow-custom">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            Hitung Nilai Kinerja
-                        </button>
                     </div>
                 </div>
             </div>

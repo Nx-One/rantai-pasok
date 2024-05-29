@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class MitigasiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     // Hor 1
     public function hor1()
     {

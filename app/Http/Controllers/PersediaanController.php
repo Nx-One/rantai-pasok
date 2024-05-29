@@ -9,6 +9,11 @@ use App\Http\Helpers\Helper;
 
 class PersediaanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('persediaan.index');

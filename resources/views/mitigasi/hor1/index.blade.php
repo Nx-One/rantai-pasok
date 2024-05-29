@@ -81,164 +81,26 @@
                 <h4>Severity</h4>
             </div>
         </div>
-        <form action="">
+        <form action="" id="risk-events-form">
             <div class="row">
                 <div class="col-1">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E1"/>
+                            <input type="text" class="form-control risk-events text-center" placeholder="En"/>
                         </div>
                     </div>
                 </div>
                 <div class="col-10">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
+                            <input type="text" class="form-control risk-events" placeholder="+ Tambah kejadian risiko"/>
                         </div>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E2"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E3"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E4"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E5"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="E6"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" placeholder="En"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" placeholder="Lorem"/>
+                            <input type="text" class="form-control risk-events text-center" placeholder=""/>
                         </div>
                     </div>
                 </div>
@@ -260,169 +122,126 @@
                 <h4>Occurance</h4>
             </div>
         </div>
-        <form action="">
+        <form action="" id="risk-source-form">
             <div class="row">
                 <div class="col-1">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A1"/>
+                            <input type="text" class="form-control risk-source text-center" placeholder="An"/>
                         </div>
                     </div>
                 </div>
                 <div class="col-10">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
+                            <input type="text" class="form-control risk-source" placeholder="+ Tambahkan penyebab risiko"/>
                         </div>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A2"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A3"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A4"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A5"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="A6"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" value="Lorem"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" placeholder="An"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Lorem Ipsum"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control text-center" placeholder="Lorem"/>
+                            <input type="text" class="form-control risk-source text-center" placeholder=""/>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    <div class="row mb-5">
+        <div class="col text-end">
+            <div class="form-group mt-4">
+                <a href="{{ route('hor1Connection') }}" class="btn btn-yellow-custom">
+                    Selanjutnya
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
+@section('scriptMitigasi')
+    <script>
+        $(document).on('change', '.risk-events', function() {
+            var allFilled = true;
+            $(this).closest('.row').find('input').each(function() {
+                if ($(this).val() === '') {
+                    allFilled = false;
+                    return false; // break the loop
+                }
+            });
+
+            if (allFilled) {
+                var newRow = `
+                    <div class="row">
+                        <div class="col-1">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-events text-center" placeholder="En"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-events" placeholder="+ Tambah kejadian risiko"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-events text-center" placeholder=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $(this).closest('form#risk-events-form').append(newRow);
+            }
+        });
+
+        $(document).on('change', '.risk-source', function() {
+            var allFilled = true;
+            $(this).closest('.row').find('input').each(function() {
+                if ($(this).val() === '') {
+                    allFilled = false;
+                    return false; // break the loop
+                }
+            });
+
+            if (allFilled) {
+                var newRow = `
+                    <div class="row">
+                        <div class="col-1">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-source text-center" placeholder="An"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-source" placeholder="+ Tambah kejadian risiko"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control risk-source text-center" placeholder=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $(this).closest('form#risk-source-form').append(newRow);
+            }
+        });
+        $(function() {
+            
+        });
+    </script>
+@endsection
