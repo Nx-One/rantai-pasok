@@ -217,7 +217,7 @@ class MitigasiController extends Controller
     }
     public function hor2Connection($id_record)
     {
-        $mitigationRecord = MitigationRecord::find($id_record)->with('mitigation_headers')->first();
+        $mitigationRecord = MitigationRecord::with('mitigation_headers')->find($id_record);
         $mitigationResults = MitigationResult::with('mitigation_headers')->where('mitigation_record_id', $id_record)->where('cumulative', '<', 80)->where('master_category_risk_id', 2)->get();
         $masterCategoryRisks = MasterCategoryRisk::all();
         return view('mitigasi.hor2.connection', compact('mitigationRecord', 'mitigationResults', 'masterCategoryRisks', 'id_record'));
