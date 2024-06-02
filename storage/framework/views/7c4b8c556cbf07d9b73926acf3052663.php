@@ -26,7 +26,8 @@
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="sidebar-logo m-auto">
-                    <a href="<?php echo e(route('home')); ?>"><img src="<?php echo e(asset('img/logo.png')); ?>" alt="" width="190"></a>
+                    
+                    <a href="<?php echo e(route('home')); ?>"><h2 class="m-0 mt-3 text-dark fw-bolder" style="font-family: Montserrat;">LMU-DSS</h2></a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -73,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="<?php echo e(route('hor1Mitigasi')); ?>" class="sidebar-link">
+                    <a href="<?php echo e(route('mitigasi.index')); ?>" class="sidebar-link">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <span>Mitigasi Risiko</span>
                     </a>

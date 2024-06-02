@@ -11,11 +11,24 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container">
+    <div class="row mb-5">
+        <div class="col-4">
+            <h1>Apa itu LMU - DSS?</h1>
+        </div>
+        <div class="col-2">
+            <img src="<?php echo e(asset('img/pen.png')); ?>" alt="">
+        </div>
+        <div class="col-4 rounded bg-yellow-custom">
+            <p>
+                LMU-DSS merupakan sistem penunjang keputusan berbasis web yang mengintegrasikan model pengambilan keputusan pada aspek kinerja, mitigasi risiko, penurunan mutu, dan manajemen persediaan untuk PT Laris Manis Utama dalam optimalisasi rantai pasok perusahaan.
+            </p>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6" id="persediaan-icon">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="fa-solid fa-warehouse" style="font-size: 200px"></i>
+                    <i class="fa-solid fa-warehouse" style="font-size: 150px"></i>
                     <h1>Persediaan</h1>
                 </div>
             </div>
@@ -37,7 +50,7 @@
         <div class="col-md-6" id="mutu-icon">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="fa-solid fa-vial" style="font-size: 200px"></i>
+                    <i class="fa-solid fa-vial" style="font-size: 150px"></i>
                     <h1>Penurunan Mutu</h1>
                 </div>
             </div>
@@ -61,7 +74,7 @@
         <div class="col-md-6" id="rantai-icon">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="fa-solid fa-chart-line" style="font-size: 200px"></i>
+                    <i class="fa-solid fa-chart-line" style="font-size: 150px"></i>
                     <h1>Kinerja Rantai Pasok</h1>
                 </div>
             </div>
@@ -83,7 +96,7 @@
         <div class="col-md-6" id="mitigasi-icon">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 200px"></i>
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 150px"></i>
                     <h1>Mitigasi Risiko</h1>
                 </div>
             </div>

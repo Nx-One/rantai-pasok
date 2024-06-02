@@ -7,11 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title>Rantai Pasok</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Montserrat" rel="stylesheet">
 
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
@@ -23,7 +24,8 @@
             <div class="d-flex">
                 
                 <div class="sidebar-logo m-auto">
-                    <a href="#"><img src="<?php echo e(asset('img/logo.png')); ?>" alt="" width="190"></a>
+                    
+                    <a href="<?php echo e(route('home')); ?>"><h2 class="m-0 mt-3 text-dark fw-bolder" style="font-family: Montserrat;">LMU-DSS</h2></a>
                 </div>
             </div>
             <ul class="sidebar-nav">

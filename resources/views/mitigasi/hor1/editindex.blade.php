@@ -6,8 +6,9 @@
 @endsection
 
 @section('contentMitigasi')
-<form action="{{ route('mitigasi.create') }}" method="POST">
+<form action="{{ route('mitigasi.update', $id_record) }}" method="POST">
     @csrf
+    @method('PUT')
     <input type="hidden" name="type" value="HOR1">
     <div class="row my-3 justify-content-center">
         <div class="col-6">
@@ -89,13 +90,40 @@
                 <h4>Severity</h4>
             </div>
         </div>
+        @foreach($mitigationHeader->where('master_category_risk_id', 1) as $mitigasi)
+            <div class="row">
+                <div class="col-1">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="hidden" name="category_id[]" class="risk-events" value="1">
+                            <input type="hidden" name="mitigation_header_id[]" value="{{ $mitigasi->id }}">
+                            <input type="text" class="form-control risk-events text-center" value="{{ $mitigasi->code }}" readonly name="code[]"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control risk-events" value="{{ $mitigasi->description }}" name="description[]"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="number" max="10" class="form-control risk-events text-center max-10" value="{{ $mitigasi->value }}" name="value[]"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
         <div id="risk-events-form">
             <div class="row">
                 <div class="col-1">
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <input type="hidden" name="category_id[]" class="risk-events" value="1">
-                            <input type="text" class="form-control risk-events text-center" value="E1" readonly name="code[]"/>
+                            <input type="text" class="form-control risk-events text-center" value="E{{ $mitigationHeader->where('master_category_risk_id', 1)->count() + 1 }}" readonly name="code[]"/>
                         </div>
                     </div>
                 </div>
@@ -132,26 +160,55 @@
             </div>
         </div>
         <div id="risk-source-form">
-            <div class="row">
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="hidden" name="category_id[]" class="risk-events" value="2">
-                            <input type="text" class="form-control risk-source text-center" value="A1" readonly name="code[]"/>
+            @foreach($mitigationHeader->where('master_category_risk_id', 2) as $mitigasi)
+                <div class="row">
+                    <div class="col-1">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="hidden" name="category_id[]" class="risk-events" value="2">
+                                <input type="hidden" name="mitigation_header_id[]" value="{{ $mitigasi->id }}">
+                                <input type="text" class="form-control risk-source text-center" value="{{ $mitigasi->code }}" readonly name="code[]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control risk-source" value="{{ $mitigasi->description }}" name="description[]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="number" max="10" class="form-control risk-source text-center max-10" value="{{ $mitigasi->value }}" name="value[]"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-10">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control risk-source" placeholder="+ Tambahkan penyebab risiko" name="description[]"/>
+            @endforeach
+            <div id="risk-source-form">
+                <div class="row">
+                    <div class="col-1">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="hidden" name="category_id[]" class="risk-events" value="2">
+                                <input type="text" class="form-control risk-source text-center" value="A{{ $mitigationHeader->where('master_category_risk_id', 2)->count() + 1 }}" readonly name="code[]"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-1">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="number" max="10" class="form-control risk-source text-center max-10" placeholder="" name="value[]"/>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control risk-source" placeholder="+ Tambahkan penyebab risiko" name="description[]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input type="number" max="10" class="form-control risk-source text-center max-10" placeholder="" name="value[]"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,17 +226,15 @@
         </div>
     </div>
 </form>
-    
-
 @endsection
 
 @section('scriptMitigasi')
     <script>
-        let counterCodeEvent = 2;
-        let counterCodeSource = 2;
+        let counterCodeEvent = {{$mitigationHeader->where('master_category_risk_id', 1)->count() + 2}};
+        let counterCodeSource = {{$mitigationHeader->where('master_category_risk_id', 2)->count() + 2}};
         $(document).on('change', '.risk-events', function() {
             var allFilled = true;
-            $(this).closest('.row').find('input').each(function() {
+            $(this).closest('.row').find('input').slice(-3).each(function() {
                 if ($(this).val() === '') {
                     allFilled = false;
                     return false; // break the loop
@@ -220,7 +275,7 @@
 
         $(document).on('change', '.risk-source', function() {
             var allFilled = true;
-            $(this).closest('.row').find('input').each(function() {
+            $(this).closest('.row').find('input').slice(-3).each(function() {
                 if ($(this).val() === '') {
                     allFilled = false;
                     return false; // break the loop

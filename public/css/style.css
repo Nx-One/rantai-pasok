@@ -106,7 +106,7 @@ a.sidebar-link:hover {
     position: absolute;
     top: 0;
     left: 70px;
-    background-color: #0e2238;
+    background-color: #fff2ac;
     padding: 0;
     min-width: 15rem;
     display: none;
@@ -156,4 +156,8 @@ a.sidebar-link:hover {
     --bs-btn-disabled-color: #202020;
     --bs-btn-disabled-bg: #fff2ac;
     --bs-btn-disabled-border-color: #fff2ac;
+}
+
+.bg-warning-custom {
+    background-color: #FFD809;
 }

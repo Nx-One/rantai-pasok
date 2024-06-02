@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col d-flex justify-content-end">
                     <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-yellow-custom">Hitung EOQ</button>
+                        <button type="submit" class="btn btn-yellow-custom">Hitung EOQ Safety Stock</button>
                     </div>
                 </div>
             </div>

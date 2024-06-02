@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^2.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.5"
@@ -31,7 +32,8 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Http/Helpers"
+            "app/Http/Helpers/Helper.php",
+            "app/Http/Helpers/Constant.php"
         ]
     },
     "scripts": {

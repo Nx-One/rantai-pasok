@@ -58,4 +58,41 @@ class Helper{
         }
     }
 
+    // mitigation risk
+    public static function countMitigationRisk1($occurrence, $severities, $connection_values){
+        $result = 0;
+
+        if (count($severities) == count($connection_values)) {
+            for ($i = 0; $i < count($severities); $i++) {
+                $result += $severities[$i] * $connection_values[$i];
+            }
+        } else {
+            // Handle error
+            throw new Exception('The lengths of severities and connection_values must be the same');
+        }
+
+        return $occurrence * $result;
+
+    }
+
+    public static function countMitigationRisk2($degree, $arp, $connection_values){
+        $result = 0;
+
+        if (count($arp) == count($connection_values)) {
+            for ($i = 0; $i < count($arp); $i++) {
+                $result += $arp[$i] * $connection_values[$i];
+            }
+        } else {
+            // Handle error
+            throw new Exception('The lengths of severities and connection_values must be the same');
+        }
+
+        return $degree * $result;
+
+    }
+
+    public static function sumMitigationRiskPercentage($mitigationResult, $sumMitigationRisk){
+        return ($mitigationResult / $sumMitigationRisk) * 100;
+    }
+
 }

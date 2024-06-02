@@ -7,11 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Rantai Pasok</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Montserrat" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -25,7 +26,8 @@
                     <i class="fa-solid fa-bars"></i>
                 </button> --}}
                 <div class="sidebar-logo m-auto">
-                    <a href="#"><img src="{{ asset('img/logo.png') }}" alt="" width="190"></a>
+                    {{-- <a href="#"><img src="{{ asset('img/logo.png') }}" alt="" width="190"></a> --}}
+                    <a href="{{ route('home') }}"><h2 class="m-0 mt-3 text-dark fw-bolder" style="font-family: Montserrat;">LMU-DSS</h2></a>
                 </div>
             </div>
             <ul class="sidebar-nav">
