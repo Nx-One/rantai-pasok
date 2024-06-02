@@ -173,7 +173,7 @@ class MitigasiController extends Controller
             $connectionValues = MitigationConnection::where('mitigation_header_id', $riskSource->id)->pluck('value');
             $occurrence = $riskSource->value;
             $severities = $riskEvents->pluck('value');
-            $result = Helper::countMitigationRisk($occurrence, $severities, $connectionValues);
+            $result = Helper::countMitigationRisk1($occurrence, $severities, $connectionValues);
             $mitigationResult = new MitigationResult();
             $mitigationResult->mitigation_header_id = $riskSource->id;
             $mitigationResult->master_category_risk_id = 2;
