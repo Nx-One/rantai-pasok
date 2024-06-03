@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <h5 class="card-title fw-bold"><u>DURIAN DALAM KONDISI <span id="condition"></span></u></h5>
                     <p class="card-text">
-                        Kadar air durian dengan lama penyimpanan <span id="store"></span> bulan diprediksi memiliki  kadar air <span id="percentage"></span> % . Batas kadar air durian ditetapkan sebesar 60 %
+                        Nilai penerimaan konsumen terhadap aroma durian dengan lama penyimpanan <span id="store"></span> bulan diprediksi memiliki nilai <span id="percentage"></span>.  Batas nilai kesukaan ditetapkan sebesar 74,72%.
                     </p>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                 labels: [9,12,24],
                 datasets: [
                     {
-                        label: "Kadar Air",
-                        data: [0.64 ,0.62 ,0.59],
+                        label: "Aroma",
+                        data: [72,72.66666667,75.33333333],
                         backgroundColor: "#337ab7",
                         borderColor: "#337ab7",
                         borderWidth: 1,
@@ -73,7 +73,7 @@
             const month = new Date(tanggal).getMonth() + 1; // get the month number
 
             const labels = [9, 12, 24];
-            const data = [0.64, 0.62, 0.59];
+            const data = [72,72.66666667,75.33333333];
 
             // Set the point background and border colors based on the selected month
             const pointBackgroundColors = labels.map(label => label === month ? 'red' : '#337ab7');
@@ -86,7 +86,7 @@
                     labels: labels,
                     datasets: [
                         {
-                            label: "Kadar Air",
+                            label: "Aroma",
                             data: data,
                             borderWidth: 1,
                             pointBackgroundColor: pointBackgroundColors,
@@ -109,7 +109,7 @@
             const y = data[labels.indexOf(month)];
 
             let condition = 'NORMAL';
-            if (x > 21.25 || y > 0.6) {
+            if (x > 21.25 || y > 74.722) {
                 condition = 'DILUAR BATAS AMAN';
             }
 

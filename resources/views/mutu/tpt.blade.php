@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <h5 class="card-title fw-bold"><u>DURIAN DALAM KONDISI <span id="condition"></span></u></h5>
                     <p class="card-text">
-                        Kadar air durian dengan lama penyimpanan <span id="store"></span> bulan diprediksi memiliki  kadar air <span id="percentage"></span> % . Batas kadar air durian ditetapkan sebesar 60 %
+                        Nilai penerimaan konsumen terhadap rasa durian dengan lama penyimpanan <span id="store"></span> bulan diprediksi memiliki nilai <span id="percentage"></span>.  Batas nilai aman untuk Total Padatan Terlarut ditetapkan sebesar 29,49.
                     </p>
                 </div>
             </div>
@@ -42,11 +42,11 @@
         window.myChart = new Chart(ctx, {
             type: "line",
             data: {
-                labels: [9,12,24],
+                labels: [9,10,11,25],
                 datasets: [
                     {
-                        label: "Kadar Air",
-                        data: [0.64 ,0.62 ,0.59],
+                        label: "TPT (Brix)",
+                        data: [32.5,33,32,28.5],
                         backgroundColor: "#337ab7",
                         borderColor: "#337ab7",
                         borderWidth: 1,
@@ -72,8 +72,8 @@
             const tanggal = document.getElementById("tanggal").value;
             const month = new Date(tanggal).getMonth() + 1; // get the month number
 
-            const labels = [9, 12, 24];
-            const data = [0.64, 0.62, 0.59];
+            const labels = [9,10,11,25];
+            const data = [32.5,33,32,28.5];
 
             // Set the point background and border colors based on the selected month
             const pointBackgroundColors = labels.map(label => label === month ? 'red' : '#337ab7');
@@ -86,7 +86,7 @@
                     labels: labels,
                     datasets: [
                         {
-                            label: "Kadar Air",
+                            label: "TPT (Brix)",
                             data: data,
                             borderWidth: 1,
                             pointBackgroundColor: pointBackgroundColors,
@@ -109,7 +109,7 @@
             const y = data[labels.indexOf(month)];
 
             let condition = 'NORMAL';
-            if (x > 21.25 || y > 0.6) {
+            if (x > 21.25 || y < 29.493625) {
                 condition = 'DILUAR BATAS AMAN';
             }
 
