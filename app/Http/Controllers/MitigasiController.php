@@ -162,18 +162,15 @@ class MitigasiController extends Controller
         }
 
         // count result
-
-        $mitigationHeader = MitigationHeader::where('mitigation_record_id', $request->mitigation_record_id)->get();
-        $riskEvents = $mitigationHeader->where('master_category_risk_id', 1);
-        $riskSources = $mitigationHeader->where('master_category_risk_id', 2);
-
+        $riskEvents = MitigationHeader::where('mitigation_record_id', $request->mitigation_record_id)->where('master_category_risk_id', 1)->get();
+        $riskSources = MitigationHeader::where('mitigation_record_id', $request->mitigation_record_id)->where('master_category_risk_id', 2)->get();
+        
         $mitRes = [];
-
         foreach($riskSources as $riskSource) {
             $connectionValues = MitigationConnection::where('mitigation_header_id', $riskSource->id)->pluck('value');
             $occurrence = $riskSource->value;
             $severities = $riskEvents->pluck('value');
-            $result = Helper::countMitigationRisk1($occurrence, $severities, $connectionValues);
+            $result = Helper::countMitigationRisk($occurrence, $severities, $connectionValues);
             $mitigationResult = new MitigationResult();
             $mitigationResult->mitigation_header_id = $riskSource->id;
             $mitigationResult->master_category_risk_id = 2;
@@ -182,9 +179,7 @@ class MitigasiController extends Controller
         }
 
         $mitRes = collect($mitRes);
-
         $mitRes = $mitRes->sortByDesc('value');
-
         $sumMitigationRisk = $mitRes->sum('value');
         $counter = 1;
         
@@ -238,9 +233,7 @@ class MitigasiController extends Controller
         }
 
         // count result
-
-        $mitigationHeader = MitigationHeader::where('mitigation_record_id', $request->mitigation_record_id)->get();
-        $riskMitigations = $mitigationHeader->where('master_category_risk_id', 3);
+        $riskMitigations = MitigationHeader::where('mitigation_record_id', $request->mitigation_record_id)->where('master_category_risk_id', 3)->get();
         $riskSources = MitigationResult::where('mitigation_record_id', $request->mitigation_record_id)->where('master_category_risk_id', 2)->where('cumulative', '<', 80);
 
         $mitRes = [];
@@ -249,7 +242,7 @@ class MitigasiController extends Controller
             $connectionValues = MitigationConnection::where('mitigation_header_id', $riskMitigation->id)->pluck('value');
             $degree = $riskMitigation->value;
             $arp = $riskSources->pluck('value');
-            $result = Helper::countMitigationRisk2($degree, $arp, $connectionValues);
+            $result = Helper::countMitigationRisk($degree, $arp, $connectionValues);
             $mitigationResult = new MitigationResult();
             $mitigationResult->mitigation_header_id = $riskMitigation->id;
             $mitigationResult->master_category_risk_id = 3;

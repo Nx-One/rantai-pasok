@@ -179,7 +179,7 @@
         let counterCodeSource = 2;
         $(document).on('change', '.risk-events', function() {
             var allFilled = true;
-            $(this).closest('.row').find('input').each(function() {
+            $(this).closest('.row').find('input').slice(-3).each(function() {
                 if ($(this).val() === '') {
                     allFilled = false;
                     return false; // break the loop
