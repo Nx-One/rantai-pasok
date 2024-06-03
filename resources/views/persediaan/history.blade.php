@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Tanggal</th>
-                <th>Persediaan (Pack)</th>
-                <th>Minimal Persediaan (Pack)</th>
+                <th>EOQ (Kontainer/Tahun)</th>
+                <th>Safety Stock (Unit)</th>
                 <th>User</th>
                 <th>Aksi</th>
             </tr>
@@ -19,8 +19,8 @@
             @foreach ($inventories as $inventory)
             <tr>
                 <td>{{ $inventory->updated_at }}</td>
-                <td>{{ $inventory->durian_quantity }}</td>
-                <td>{{ $inventory->minimum_stock }}</td>
+                <td>{{ $inventory->eoq }}</td>
+                <td>{{ $inventory->safety_stock }}</td>
                 <td>{{ $inventory->user->name }}</td>
                 <td>
                     <a href="{{ route('editPersediaan', $inventory->id) }}" class="btn btn-warning">Edit</a>

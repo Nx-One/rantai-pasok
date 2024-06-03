@@ -12,53 +12,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Durian Tersedia</label>
+                        <label for="order_cost">Biaya pesan</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="durian_quantity" value="{{ $persediaan->durian_quantity }}"/>
-                            <span class="input-group-text">pack</span>
+                            <input type="text" class="form-control" name="order_cost" id="order_cost" value="{{ $persediaan->order_cost }}"/>
+                            <span class="input-group-text">Rp/Kontainer</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Durian Diterima</label>
+                        <label for="store_cost">Holding Cost</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="durian_received" value="{{ $persediaan->durian_received }}"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Dikirim</label>
-                        <input type="date" class="form-control" name="last_sent_at" value="{{ $persediaan->last_sent_at->format('Y-m-d') }}"/>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Diterima</label>
-                        <input type="date" class="form-control" name="last_received_at" value="{{ $persediaan->last_received_at->format('Y-m-d') }}"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Biaya Penyimpanan</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="store_cost" value="{{ $persediaan->store_cost }}"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Biaya Pemesanan</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="order_cost" value="{{ $persediaan->order_cost }}"/>
+                            <input type="text" class="form-control" name="store_cost" id="store_cost" value="{{ $persediaan->store_cost }}"/>
+                            <span class="input-group-text">%</span>
                         </div>
                     </div>
                 </div>
@@ -66,27 +32,43 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Harga Jual</label>
+                        <label for="price">Harga jual produk</label>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="demand" value="{{ $persediaan->demand }}"/>
+                            <input type="text" class="form-control" name="price" id="price" value="{{ $persediaan->price }}"/>
+                            <span class="input-group-text">Rp/Unit</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah Permintaan</label>
+                        <label for="demand">Jumlah Permintaan</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="price" value="{{ $persediaan->price }}"/>
-                            <span class="input-group-text">Pack</span>
+                            <input type="text" class="form-control" name="demand" id="demand" value="{{ $persediaan->demand }}"/>
+                            <span class="input-group-text">Kontainer/Tahun</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col d-flex justify-content-end">
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-yellow-custom">Hitung EOQ Safety Stock</button>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="deviation">Nilai standar deviasi</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="deviation" id="deviation" value="{{ $persediaan->deviation }}"/>
+                            <span class="input-group-text">/bulan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-yellow-custom">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Hitung EOQ dan Safety Stock
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,18 +76,34 @@
     </div>
     <div class="row mt-5">
         <div class="col-4">
-            <h3 class="fw-semibold">Persediaan minimum:</h3>
+            <h5 class="fw-semibold">Economic Order Quantity (EOQ):</h5>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" readonly name="minimum_stock" value="{{ $persediaan->minimum_stock }}"/>
+                    <input type="text" class="form-control" readonly name="eoq" value="{{ $persediaan->eoq }}"/>
+                    <span class="input-group-text">Kontainer/Tahun</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <p class="text-muted">Perusahaan sebaiknya melakukan <u class="text-secondary">{{ $persediaan->durian_quantity }} kali pengiriman/tahun</u> dengan jumlah pesanan <u class="text-secondary">{{ $persediaan->eoq }} kontainer/pengiriman</u></p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-4">
+            <h5 class="fw-semibold">Safety Stock :</h5>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" readonly name="safety_stock" value="{{ $persediaan->safety_stock }}"/>
                     <span class="input-group-text">Pack</span>
                 </div>
             </div>
         </div>
         <div class="col-5">
-            <p>Nilai persediaan minimum ini akan mencegah terjadinya kelebihan dan kekurangan stok</p>
+            <p>Untuk mengatasi permintaan yang probablistik, jumlah safety stock yang harus dimiliki yaitu sebanyak <u class="text-secondary">{{ $persediaan->safety_stock }} unit</u></p>
         </div>
     </div>
 </div>

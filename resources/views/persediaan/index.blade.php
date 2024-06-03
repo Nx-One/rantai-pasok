@@ -11,53 +11,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Durian Tersedia</label>
+                        <label for="order_cost">Biaya pesan</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="durian_quantity"/>
-                            <span class="input-group-text">pack</span>
+                            <input type="text" class="form-control" name="order_cost" id="order_cost"/>
+                            <span class="input-group-text">Rp/Kontainer</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Durian Diterima</label>
+                        <label for="store_cost">Holding Cost</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="durian_received"/>
-                            <span class="input-group-text">pack</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Dikirim</label>
-                        <input type="date" class="form-control" name="last_sent_at"/>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Diterima</label>
-                        <input type="date" class="form-control" name="last_received_at"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Biaya Penyimpanan</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="store_cost"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Biaya Pemesanan</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="order_cost"/>
+                            <input type="text" class="form-control" name="store_cost" id="store_cost"/>
+                            <span class="input-group-text">%</span>
                         </div>
                     </div>
                 </div>
@@ -65,27 +31,43 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Harga Jual</label>
+                        <label for="price">Harga jual produk</label>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Rp</span>
-                            <input type="text" class="form-control" name="demand"/>
+                            <input type="text" class="form-control" name="price" id="price"/>
+                            <span class="input-group-text">Rp/Unit</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Jumlah Permintaan</label>
+                        <label for="demand">Jumlah Permintaan</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="price"/>
-                            <span class="input-group-text">Pack</span>
+                            <input type="text" class="form-control" name="demand" id="demand"/>
+                            <span class="input-group-text">Kontainer/Tahun</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col d-flex justify-content-end">
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-yellow-custom">Hitung EOQ Safety Stock</button>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="deviation">Nilai standar deviasi</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="deviation" id="deviation"/>
+                            <span class="input-group-text">/bulan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-yellow-custom">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Hitung EOQ dan Safety Stock
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

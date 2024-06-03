@@ -29,37 +29,38 @@ class PersediaanController extends Controller
     public function store(Request $request){
         try{
             $request->validate([
-                'durian_quantity' => 'required|numeric|gt:0',
-                'durian_received' => 'required|numeric|gt:0',
-                'last_sent_at' => 'required|date',
-                'last_received_at' => 'required|date|after:last_sent_at',
-                'store_cost' => 'required|numeric|gt:0',
                 'order_cost' => 'required|numeric|gt:0',
+                'store_cost' => 'required|numeric|gt:0',
                 'demand' => 'required|numeric|gt:0',
                 'price' => 'required|numeric|gt:0',
+                'deviation' => 'required|numeric|gt:0',
             ]);
         }catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
         }
 
-        // $H = ($request->store_cost + $request->order_cost) / $request->durian_received;
-        // $S = $request->price;
-        // $D = $request->demand;
-        // $EOQ = sqrt((2 * $D * $S) / $H);
+        $s = $request->order_cost; // Biaya pesan
+        $d = $request->demand;
+        $i = $request->store_cost / 100; // Holding Cost
+        $c = $request->price; //Harga jual produk
 
-        $EOQ = Helper::getEOQ($request->store_cost, $request->order_cost, $request->durian_received, $request->price, $request->demand);
+        $H = $i * $c * 2500;
+
+        $EOQ = Helper::getEOQ($d, $s, $H);
+        $durian_quantity = $d/$EOQ;
+
+        $safety_stock = Helper::getSafetyStock($request->deviation);
 
         $persediaan = new Inventory;
-        $persediaan->durian_quantity = $request->durian_quantity;
-        $persediaan->durian_received = $request->durian_received;
-        $persediaan->minimum_stock = $EOQ;
-        $persediaan->last_sent_at = $request->last_sent_at;
-        $persediaan->last_received_at = $request->last_received_at;
+        $persediaan->durian_quantity = round($durian_quantity);
+        $persediaan->eoq = $EOQ;
         $persediaan->store_cost = $request->store_cost;
         $persediaan->order_cost = $request->order_cost;
         $persediaan->demand = $request->demand;
         $persediaan->price = $request->price;
         $persediaan->user_id = auth()->user()->id;
+        $persediaan->safety_stock = $safety_stock;
+        $persediaan->deviation = $request->deviation;
         $persediaan->save();
 
         return redirect()->route('editPersediaan', ['id' => $persediaan->id])->with('success', 'Data berhasil ditambahkan');
@@ -73,37 +74,38 @@ class PersediaanController extends Controller
     public function update(Request $request, $id){
         try{
             $request->validate([
-                'durian_quantity' => 'required',
-                'durian_received' => 'required',
-                'last_sent_at' => 'required',
-                'last_received_at' => 'required',
-                'store_cost' => 'required',
-                'order_cost' => 'required',
-                'demand' => 'required',
-                'price' => 'required',
+                'order_cost' => 'required|numeric|gt:0',
+                'store_cost' => 'required|numeric|gt:0',
+                'demand' => 'required|numeric|gt:0',
+                'price' => 'required|numeric|gt:0',
+                'deviation' => 'required|numeric|gt:0',
             ]);
         }catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
         }
 
-        // $H = ($request->store_cost + $request->order_cost) / $request->durian_received;
-        // $S = $request->price;
-        // $D = $request->demand;
-        // $EOQ = sqrt((2 * $D * $S) / $H);
+        $s = $request->order_cost; // Biaya pesan
+        $d = $request->demand;
+        $i = $request->store_cost / 100; // Holding Cost
+        $c = $request->price; //Harga jual produk
 
-        $EOQ = Helper::getEOQ($request->store_cost, $request->order_cost, $request->durian_received, $request->price, $request->demand);
+        $H = $i * $c * 2500;
+
+        $EOQ = Helper::getEOQ($d, $s, $H);
+        $durian_quantity = $d/$EOQ;
+
+        $safety_stock = Helper::getSafetyStock($request->deviation);
 
         $persediaan = Inventory::find($id);
-        $persediaan->durian_quantity = $request->durian_quantity;
-        $persediaan->durian_received = $request->durian_received;
-        $persediaan->minimum_stock = $EOQ;
-        $persediaan->last_sent_at = $request->last_sent_at;
-        $persediaan->last_received_at = $request->last_received_at;
+        $persediaan->durian_quantity = round($durian_quantity);
+        $persediaan->eoq = $EOQ;
         $persediaan->store_cost = $request->store_cost;
         $persediaan->order_cost = $request->order_cost;
         $persediaan->demand = $request->demand;
         $persediaan->price = $request->price;
         $persediaan->user_id = auth()->user()->id;
+        $persediaan->safety_stock = $safety_stock;
+        $persediaan->deviation = $request->deviation;
         $persediaan->save();
 
         return redirect()->route('editPersediaan', ['id' => $persediaan->id])->with('success', 'Data berhasil diubah');

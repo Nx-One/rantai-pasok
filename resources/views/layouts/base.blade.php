@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('mutu') }}" class="sidebar-link">
+                    <a href="{{ route('mutu.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-vial"></i>
                         <span>Penurunan Mutu</span>
                     </a>

@@ -10,6 +10,9 @@
 @section('content')
 <div class="container">
     <div class="row my-3">
+        <div class="col-1 m-0 p-0" style="width: auto">
+            <h1 style="font-size: 7rem">!</h1>
+        </div>
         <div class="col-4 rounded" style="background-color: #D9D9D9">
             <p>
                 Pengukuran nilai kinerja rantai pasok ini menggunakan model Supply Chain Operations Reference (SCOR) yang disesuaikan dengan proses bisnis perusahaan. Isilah setiap penilaian.

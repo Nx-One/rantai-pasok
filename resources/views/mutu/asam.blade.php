@@ -72,8 +72,8 @@
             const tanggal = document.getElementById("tanggal").value;
             const month = new Date(tanggal).getMonth() + 1; // get the month number
 
-            const labels = [9, 12, 24];
-            const data = [0.64, 0.62, 0.59];
+            const labels = [9,10,11,12,24];
+            const data = [0.3775,0.445,0.51,0.43,0.69];
 
             // Set the point background and border colors based on the selected month
             const pointBackgroundColors = labels.map(label => label === month ? 'red' : '#337ab7');

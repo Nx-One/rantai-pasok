@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="<?php echo e(route('mutu')); ?>" class="sidebar-link">
+                    <a href="<?php echo e(route('mutu.index')); ?>" class="sidebar-link">
                         <i class="fa-solid fa-vial"></i>
                         <span>Penurunan Mutu</span>
                     </a>

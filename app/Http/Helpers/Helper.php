@@ -3,11 +3,20 @@ namespace App\Http\Helpers;
 use App\Http\Helpers\Constant;
 
 class Helper{
-    public static function getEOQ($store_cost, $order_cost, $durian_received, $price, $demand){
-        $H = ($store_cost + $order_cost) / $durian_received;
-        $S = $price;
-        $D = $demand;
+    // public static function getEOQ($store_cost, $order_cost, $durian_received, $price, $demand){
+    //     $H = ($store_cost + $order_cost) / $durian_received;
+    //     $S = $price;
+    //     $D = $demand;
+    //     return sqrt((2 * $D * $S) / $H);
+    // }
+    public static function getEOQ($D, $S, $H){
         return sqrt((2 * $D * $S) / $H);
+    }
+
+    public static function getSafetyStock($deviation){
+        $lead_time = sqrt(0.5);
+        $std_deviation = 1.645;
+        return round($deviation * $lead_time * $std_deviation);
     }
 
 

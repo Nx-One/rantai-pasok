@@ -43,4 +43,9 @@ Route::post('/mitigasi/hor2/create', [App\Http\Controllers\MitigasiController::c
 Route::get('/mitigasi/pdf/{id_record}/{id_category}', [App\Http\Controllers\MitigasiController::class, 'pdf'])->name('mitigasi.pdf');
 
 
-Route::get('/mutu', [App\Http\Controllers\MutuController::class, 'index'])->name('mutu');
+Route::get('/mutu', [App\Http\Controllers\MutuController::class, 'index'])->name('mutu.index');
+Route::get('/mutu/rasa', [App\Http\Controllers\MutuController::class, 'rasa'])->name('mutu.rasa');
+Route::get('/mutu/warna', [App\Http\Controllers\MutuController::class, 'warna'])->name('mutu.warna');
+Route::get('/mutu/aroma', [App\Http\Controllers\MutuController::class, 'aroma'])->name('mutu.aroma');
+Route::get('/mutu/asam', [App\Http\Controllers\MutuController::class, 'asam'])->name('mutu.asam');
+Route::get('/mutu/tpt', [App\Http\Controllers\MutuController::class, 'tpt'])->name('mutu.tpt');
