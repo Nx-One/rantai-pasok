@@ -253,7 +253,7 @@
             document.getElementById('card').classList.remove('d-none');
             document.getElementById('condition').textContent = condition;
             document.getElementById('store').textContent = month;
-            document.getElementById('percentage').textContent = y * 100;
+            document.getElementById('percentage').textContent = y;
         });
     </script>
 @endsection
