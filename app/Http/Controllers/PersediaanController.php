@@ -44,7 +44,7 @@ class PersediaanController extends Controller
         $i = $request->store_cost / 100; // Holding Cost
         $c = $request->price; //Harga jual produk
 
-        $H = $i * $c * 2500;
+        $H = $i * $c * 12000;
 
         $EOQ = Helper::getEOQ($d, $s, $H);
         $durian_quantity = $d/$EOQ;
@@ -89,7 +89,7 @@ class PersediaanController extends Controller
         $i = $request->store_cost / 100; // Holding Cost
         $c = $request->price; //Harga jual produk
 
-        $H = $i * $c * 2500;
+        $H = $i * $c * 12000;
 
         $EOQ = Helper::getEOQ($d, $s, $H);
         $durian_quantity = $d/$EOQ;

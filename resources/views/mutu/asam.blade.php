@@ -241,7 +241,7 @@
             let y = 0.0186 * month + 0.245;
 
             let condition = 'NORMAL';
-            if (y > 0.64025) {
+            if (month > 21.25) {
                 condition = 'DILUAR BATAS AMAN';
             }
 
