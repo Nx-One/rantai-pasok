@@ -16,10 +16,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             <a href="{{ route('mutu.index') }}" type="button" class="btn {{ (request()->routeIs('mutu.index')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">Kadar Air</a>
         </div>
-        <div class="col">
+        <div class="col text-center">
+            <a href="{{ route('mutu.asam') }}" type="button" class="btn {{ (request()->routeIs('mutu.asam')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">Total Asam</a>
+        </div>
+        <div class="col text-center">
+            <a href="{{ route('mutu.tpt') }}" type="button" class="btn {{ (request()->routeIs('mutu.tpt')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">TPT</a>
+        </div>
+        {{-- <div class="col">
             <a href="{{ route('mutu.rasa') }}" type="button" class="btn {{ (request()->routeIs('mutu.rasa')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">Rasa</a>
         </div>
         <div class="col">
@@ -27,13 +33,7 @@
         </div>
         <div class="col">
             <a href="{{ route('mutu.aroma') }}" type="button" class="btn {{ (request()->routeIs('mutu.aroma')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">Aroma</a>
-        </div>
-        <div class="col">
-            <a href="{{ route('mutu.asam') }}" type="button" class="btn {{ (request()->routeIs('mutu.asam')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">Total Asam</a>
-        </div>
-        <div class="col">
-            <a href="{{ route('mutu.tpt') }}" type="button" class="btn {{ (request()->routeIs('mutu.tpt')) ? 'btn-yellow-custom' : 'btn-outline-secondary' }}">TPT</a>
-        </div>
+        </div> --}}
     </div>
     <div class="row">
         @yield('contentPenurunanMutu')
@@ -41,11 +41,12 @@
     
     <div class="row my-4">
         <canvas id="myChart"></canvas>
-    </div> --}}
+    </div>
 </div>
 @endsection
 
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js" integrity="sha512-Hn1w6YiiFw6p6S2lXv6yKeqTk0PLVzeCwWY9n32beuPjQ5HLcvz5l2QsP+KilEr1ws37rCTw3bZpvfvVIeTh0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('scriptsPenurunanMutu')    
 @endsection

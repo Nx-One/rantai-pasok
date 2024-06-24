@@ -40,84 +40,221 @@
         const ctx = document.getElementById("myChart");
     
         window.myChart = new Chart(ctx, {
-            type: "line",
+            type: "scatter",
             data: {
-                labels: [9,12,24],
+                // labels: [9,12,24],
                 datasets: [
                     {
                         label: "Kadar Air",
-                        data: [0.64 ,0.62 ,0.59],
+                        // data: [0.64 ,0.62 ,0.59],
+                        data:[
+                            {x: 9, y: 0.64},
+                            {x: 12, y: 0.62},
+                            {x: 24, y: 0.59},
+                        ],
                         backgroundColor: "#337ab7",
                         borderColor: "#337ab7",
                         borderWidth: 1,
+                        showLine: true,
                     },
                 ],
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: false,
+                        grace: '20%',
+                        ticks: {
+                            stepSize: 0.01,
+                        }
                     },
+                    x: {
+                        beginAtZero: true,
+                        grace: '20%',
+                        ticks: {
+                            stepSize: 1,
+                        }
+                    }
                 },
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            label1: {
+                                type: 'label',
+                                xValue: 8,
+                                yValue: 0.60,
+                                backgroundColor: 'rgba(245,245,245)',
+                                content: ['y = -0,0028x + 0,6595', 'R² = 0,903'],
+                                font: {
+                                    size: 18
+                                }
+                            }
+                        }
+                    }
+                }
             },
         });
 
         document.getElementById("search").addEventListener("click", function() {
             
             event.preventDefault(); // prevent form submission
-            if (window.myChart) {
-                window.myChart.destroy();
-            }
 
             const tanggal = document.getElementById("tanggal").value;
-            const month = new Date(tanggal).getMonth() + 1; // get the month number
+            const dt_input = new Date(tanggal); // get the month number
+            let diff = Math.abs(new Date() - dt_input);
+            diff = diff / (1000 * 60 * 60 * 24 * 30);
+            const month = Math.round(diff);
 
-            const labels = [9, 12, 24];
-            const data = [0.64, 0.62, 0.59];
+            // const labels = [9, 12, 24];
+            // const data = [0.64, 0.62, 0.59];
+            const data = [
+                {x: 9, y: 0.64},
+                {x: 12, y: 0.62},
+                {x: 24, y: 0.59},
+            ];
 
-            // Set the point background and border colors based on the selected month
-            const pointBackgroundColors = labels.map(label => label === month ? 'red' : '#337ab7');
-            const pointBorderColors = labels.map(label => label === month ? 'red' : '#337ab7');
-            const pointBorderWidth = labels.map(label => label === month ? 3 : 0.5);
+            // check if there's any month in the data
+            let isMonthExist = data.some(label => label.x === month);
+            if (isMonthExist) {
+                if (window.myChart) {
+                    window.myChart.destroy();
+                }
+                // Set the point background and border colors based on the selected month
+                const pointBackgroundColors = data.map(label => label.x === month ? 'red' : '#337ab7');
+                const pointBorderColors = data.map(label => label.x === month ? 'red' : '#337ab7');
+                const pointBorderWidth = data.map(label => label.x === month ? 3 : 0.5);
 
-            window.myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: "Kadar Air",
-                            data: data,
-                            borderWidth: 1,
-                            pointBackgroundColor: pointBackgroundColors,
-                            pointBorderColor: pointBorderColors,
-                            pointBorderWidth: pointBorderWidth,
-                        },
-                    ],
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                        },
+                window.myChart = new Chart(ctx, {
+                    type: "scatter",
+                    data: {
+                        // labels: labels,
+                        datasets: [
+                            {
+                                label: "Kadar Air",
+                                data: data,
+                                borderWidth: 1,
+                                pointBackgroundColor: pointBackgroundColors,
+                                pointBorderColor: pointBorderColors,
+                                pointBorderWidth: pointBorderWidth,
+                                showLine: true,
+                            },
+                        ],
                     },
-                },
-            });
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grace: '20%',
+                                ticks: {
+                                    stepSize: 0.01,
+                                }
+                            },
+                            x: {
+                                beginAtZero: true,
+                                grace: '20%',
+                                ticks: {
+                                    stepSize: 1,
+                                }
+                            }
+                        },
+                        plugins: {
+                            annotation: {
+                                annotations: {
+                                    label1: {
+                                    type: 'label',
+                                    xValue: 8,
+                                    yValue: 0.60,
+                                    backgroundColor: 'rgba(245,245,245)',
+                                    content: ['y = -0,0028x + 0,6595', 'R² = 0,903'],
+                                    font: {
+                                        size: 18
+                                    }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                });
+            } else{
+                if (window.myChart) {
+                    window.myChart.destroy();
+                }
 
-            // Get the x and y values
-            const x = month;
-            const y = data[labels.indexOf(month)];
+                window.myChart = new Chart(ctx, {
+                    type: "scatter",
+                    data: {
+                        // labels: [9,12,24],
+                        datasets: [
+                            {
+                                label: "Kadar Air",
+                                // data: [0.64 ,0.62 ,0.59],
+                                data:[
+                                    {x: 9, y: 0.64},
+                                    {x: 12, y: 0.62},
+                                    {x: 24, y: 0.59},
+                                ],
+                                backgroundColor: "#337ab7",
+                                borderColor: "#337ab7",
+                                borderWidth: 1,
+                                showLine: true,
+                            },
+                        ],
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grace: '20%',
+                                ticks: {
+                                    stepSize: 0.01,
+                                }
+                            },
+                            x: {
+                                beginAtZero: true,
+                                grace: '20%',
+                                ticks: {
+                                    stepSize: 1,
+                                }
+                            }
+                        },
+                        plugins: {
+                            annotation: {
+                                annotations: {
+                                    label1: {
+                                    type: 'label',
+                                    xValue: 8,
+                                    yValue: 0.60,
+                                    backgroundColor: 'rgba(245,245,245)',
+                                    content: ['y = -0,0028x + 0,6595', 'R² = 0,903'],
+                                    font: {
+                                        size: 18
+                                    }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                });
+            }
+
+            // // Get the x and y values
+            // const x = month;
+            // const y = data[labels.indexOf(month)];
+
+            // get the month difference between today and the date selected
+            let y = -0.0028 * month + 0.6595;
 
             let condition = 'NORMAL';
-            if (x > 21.25 || y > 0.6) {
+            if (y > 0.6) {
                 condition = 'DILUAR BATAS AMAN';
             }
 
             // Update the elements
             document.getElementById('card').classList.remove('d-none');
             document.getElementById('condition').textContent = condition;
-            document.getElementById('store').textContent = x;
+            document.getElementById('store').textContent = month;
             document.getElementById('percentage').textContent = y * 100;
         });
+
     </script>
 @endsection
