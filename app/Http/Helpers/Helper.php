@@ -15,7 +15,7 @@ class Helper{
 
     public static function getSafetyStock($deviation){
         $lead_time = sqrt(0.5);
-        $std_deviation = 1.645;
+        $std_deviation = 1.65;
         return round($deviation * $lead_time * $std_deviation);
     }
 
