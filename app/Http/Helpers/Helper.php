@@ -77,6 +77,14 @@ class Helper{
 
     }
 
+    public static function countMitigationRisk2($degree, $arp, $connection_values){
+        $result = 0;
+        for ($i = 0; $i < count($arp); $i++) {
+            $result += $arp[$i] * $connection_values[$i];
+        }
+        return $result / $degree;
+    }
+
     // public static function countMitigationRisk2($degree, $arp, $connection_values){
     //     $result = 0;
 

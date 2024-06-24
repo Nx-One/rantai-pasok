@@ -242,7 +242,7 @@ class MitigasiController extends Controller
             $connectionValues = MitigationConnection::where('mitigation_header_id', $riskMitigation->id)->pluck('value');
             $degree = $riskMitigation->value;
             $arp = $riskSources->pluck('value');
-            $result = Helper::countMitigationRisk($degree, $arp, $connectionValues);
+            $result = Helper::countMitigationRisk2($degree, $arp, $connectionValues);
             $mitigationResult = new MitigationResult();
             $mitigationResult->mitigation_header_id = $riskMitigation->id;
             $mitigationResult->master_category_risk_id = 3;
@@ -251,7 +251,6 @@ class MitigasiController extends Controller
         }
 
         $mitRes = collect($mitRes);
-
         $mitRes = $mitRes->sortByDesc('value');
 
         $sumMitigationRisk = $mitRes->sum('value');
